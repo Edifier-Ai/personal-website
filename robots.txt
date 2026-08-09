@@ -1,0 +1,13 @@
+# 允许普通搜索引擎抓取公开页面。
+User-agent: *
+Allow: /
+
+# 允许内容进入 ChatGPT 搜索、摘要和引用结果。
+User-agent: OAI-SearchBot
+Allow: /
+
+# 不授权 GPTBot 将网站内容用于潜在的模型训练。
+User-agent: GPTBot
+Disallow: /
+
+Sitemap: https://summer2077.com/sitemap.xml

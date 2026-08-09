@@ -1,12 +1,15 @@
 # 个人主页
 
-- 一句话定位：oiloil.org 风格的静态个人主页，含首屏大标题、tab 作品区、联系列表。
-- 怎么跑：直接双击 `index.html`，或 `python -m http.server 8000` 后访问 `http://localhost:8000`。
+- 一句话定位：以 oiloil.org 大字排版为视觉参考的静态个人主页，含角色首屏、Tab 作品区、独立案例页和联系入口。
+- 怎么跑：在项目根目录执行 `python -m http.server 8000`，访问 `http://localhost:8000/`；内页使用根路径资源，不要用双击 HTML 代替完整验证。
 - 技术栈：纯静态 HTML / CSS / JavaScript，无构建依赖。
 - 目录约定：
-  - `index.html`：页面结构
+  - `index.html`：首页结构
+  - `about/`、`projects/`：独立介绍、项目集合与案例页
   - `css/style.css`：样式与主题变量
   - `js/main.js`：交互
-  - `assets/`：透明底 PNG 形象图和项目截图
-- 当前状态：品牌名全局为 summer2077；身份关键词为 AI PRODUCT EXPERT / VIBECODING / ENTREPRENEUR / DOG DAD。首屏男生桌面端靠字、移动端举手扶字；全部人物和小狗使用完整静态图，不做头部或眼睛跟随，并按真实可见脚底/爪底对齐；两狗紧邻。ABOUT 女生使用浅蓝色全身长裙版本 `wife-look-v3.png`，与男生按真实人物高度等比例显示并位于白狗右侧，默认隐藏，悬停后出现。联系区已配置 GitHub `@Edifier-Ai`、Email `summer0420@vip.qq.com` 与抖音 `Summer2077`，微博和小红书已移除；项目链接仍待补齐。
-- 下一步：替换占位文案/图片、填真实项目与社交链接后部署到 GitHub Pages / Vercel / Netlify。
+  - `assets/`：PNG 原图、WebP 展示图和项目截图
+  - `robots.txt`、`sitemap.xml`、`site.webmanifest`、`404.html`：发布与索引文件
+- 当前实现：正式品牌为 `summer2077`，正式域名为 `https://summer2077.com/`。首页保留男角色、两只狗和坐在数字 7 上的 ABOUT 女角色构图；角色使用完整静态图并优先加载 WebP。现有页面为 `/`、`/about/`、`/projects/`、`/projects/easy-resume/`、`/projects/tabifun/`、`/projects/ai-wardrobe/`，并包含 404、canonical、Open Graph、JSON-LD、robots、sitemap 和 manifest；无 JavaScript 时主要正文保持可见。联系区保留 GitHub `@Edifier-Ai`、Email `summer0420@vip.qq.com`、抖音号 `Edifier_AI`（昵称 `Summer2077`，主页 `https://v.douyin.com/jvzVWXVX1Ic/`）与微信交流群二维码，微博和小红书已移除。
+- 当前发布状态（2026-08-09）：上述改版仍在本地未提交工作树中，`main` 与 `origin/main` 仍指向 `b78dc6e`。正式域名已有 DNS 记录，但本轮从当前环境访问源站 HTTP/HTTPS 均超时，不能声称已部署或线上可用。下一步须在用户确认后提交、推送并部署，再验证正式 URL 与搜索平台。
+- Easy Resume：公开地址 `https://resume.easylab.com/`，仓库 `https://github.com/Edifier-Ai/EasyResume`；产品、设计与开发由 summer2077 独立完成并持续运营，内测期间帮助用户的简历通过率提升 23%。案例页明确标注当前新版尚未更新上线。

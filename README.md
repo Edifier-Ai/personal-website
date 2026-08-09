@@ -1,68 +1,107 @@
-# 个人主页
+# summer2077 个人主页
 
-版面参照 oiloil.org：首屏大号三行标题、形象站在标题末行基线上；主体是带 tab 面板的作品区；尾部大字标 + 联系列表。静态多文件，无构建依赖，双击 index.html 即可预览。
+`summer2077.com` 的零构建静态个人主页。首页保留具有辨识度的角色构图和 Tab 交互，同时提供可独立索引的个人介绍、项目列表与项目案例页面。
 
 ## 目录结构
 
-```
+```text
 <project-root>/
-├── index.html        页面结构
-├── css/style.css     全部样式，主题色在顶部 :root
-├── js/main.js        阅读进度、tab 切换、自定义光标、彩蛋、滚动显现
-├── assets/           透明底 PNG 形象图与项目截图
-└── README.md
+├── index.html                         首页
+├── about/index.html                   独立 About / ProfilePage
+├── projects/index.html                项目集合页
+├── projects/easy-resume/index.html    Easy Resume 案例页
+├── projects/tabifun/index.html        TabiFun 旅行地图案例页
+├── projects/ai-wardrobe/index.html    AI 衣橱案例页
+├── 404.html                           自定义 404（noindex）
+├── robots.txt                         搜索与 AI crawler 规则
+├── sitemap.xml                        可索引 URL 清单
+├── site.webmanifest                   站点清单
+├── css/style.css                      全站样式
+├── js/main.js                         渐进增强、Tab、轮播和灯箱
+└── assets/                            形象图、项目截图和 WebP 版本
 ```
 
-## 需要替换的占位内容
+## 品牌与正式 URL
 
-1. 昵称：当前全局统一为「summer2077」。
-2. 顶部右侧：当前已连接 `github.com/Edifier-Ai`。
-3. 项目：每个 `<article class="pmodule">` 是一张卡片，改编号、标题、标签、描述和两个链接（访问项目 / GitHub）。加项目就复制一整个 article。左侧舞台是轮播容器，目前每张 `.slide` 是文字占位（`截图 1 · 占位`），替换为 `<div class="slide"><img src="assets/cover-1.png" alt="项目截图"></div>` 即可；增删 slide 后圆点数量自动跟上。点击舞台放大，放大浮层里可用左右箭头或键盘方向键翻页、Esc 关闭。
-4. 关于我：tab「关于我」面板里的两段介绍和标签 chips。
-5. 交流：tab「交流」面板，把 `.qr-slot` 整块换成 `<img src="assets/qrcode.png" alt="微信群二维码">`，Discord 链接在第二个卡片。
-6. 联系列表：当前为 GitHub `@Edifier-Ai`、Email `summer0420@vip.qq.com` 和抖音 `Summer2077`；抖音暂用账号搜索入口，拿到个人主页直链后可替换 href。
+- 正式品牌：`summer2077`
+- 正式域名：`https://summer2077.com/`
+- GitHub：`https://github.com/Edifier-Ai`
+- Easy Resume：`https://github.com/Edifier-Ai/EasyResume`
+- TabiFun：旅行地图项目，GitHub 地址待公布
+- AI 衣橱：智能穿搭项目，GitHub 地址待公布
+- Email：`summer0420@vip.qq.com`
+- 抖音：抖音号 `Edifier_AI`，昵称 `Summer2077`，主页 `https://v.douyin.com/jvzVWXVX1Ic/`。
+- 微信群二维码：`assets/wechat-vibecoding-group-qr.png`，展示在首页“交流”第一个板块。
 
-## 图片说明
-
-当前首屏所有人物和小狗都使用完整静态 PNG，不再做头部或眼睛跟随。男生提供桌面靠字姿态 `hero-me-lean-v2.png` 与移动端举手扶字姿态 `hero-me-hang-v2.png`。黑泰迪使用圆脸、低额头的 `dog-poodle-v3.png`，两只狗按透明边界紧邻排列。男生、两只狗与隐藏女生按图片真实可见脚底/爪底对齐，而不是按 PNG 外框对齐。女生与男生按真实人物高度等比例显示，位于白狗右侧；默认隐藏，仅在对应热区悬停/聚焦时显示浅蓝色全身长裙版本 `wife-look-v3.png`。
-
-- 透明底 PNG 直接替换同名文件。
-- 如果新图是白底不透明的，给 `.scene-item img` 加 `mix-blend-mode: multiply;`，白底在白色页面上就隐形了。
-
-首屏最右的隐藏女生是 ABOUT 菜单：鼠标悬停或键盘聚焦会显示转头形象，点击会打开「关于我」面板；提示语文案在 js/main.js 的 `lines` 数组里改。
+所有 canonical、Open Graph、JSON-LD、robots 和 sitemap 均以 `https://summer2077.com/` 为唯一正式来源。切换域名时必须一起更新这些位置。
 
 ## 本地预览
 
-直接双击 index.html，或者：
+内页使用根路径资源，必须通过本地 HTTP 服务预览，不要直接双击 HTML：
 
-```
+```powershell
 python -m http.server 8000
-# 访问 http://localhost:8000
 ```
 
-## 部署到 GitHub Pages
+访问：
 
-1. 在 GitHub 新建仓库，比如 `homepage`。
-2. 把本目录内容推上去：
+- `http://localhost:8000/`
+- `http://localhost:8000/about/`
+- `http://localhost:8000/projects/`
+- `http://localhost:8000/projects/easy-resume/`
+- `http://localhost:8000/projects/tabifun/`
+- `http://localhost:8000/projects/ai-wardrobe/`
 
+## 内容发布规则
+
+1. 每个真实项目使用一个独立目录和 URL，例如 `projects/project-name/index.html`。
+2. 每页必须有独立 `title`、description、canonical、Open Graph 和匹配可见正文的 JSON-LD。
+3. 不发布空项目卡、`href="#"`、虚构指标、虚构评分或未经确认的链接。
+4. 新增或删除页面时同步更新 `sitemap.xml`。
+5. `dateModified` 和 sitemap `lastmod` 只在内容确实发生变化时更新。
+6. 项目案例优先补充：问题、目标用户、个人职责、产品取舍、技术方案、真实结果、演示地址和公开代码。
+
+## 图片策略
+
+- HTML 优先加载体积较小的 WebP，并保留 PNG fallback。
+- 首屏只有主要人物图片使用 `fetchpriority="high"`；隐藏形象和非关键图片降低优先级。
+- 项目截图使用 `loading="lazy"`。
+- 替换图片后同时生成对应 WebP，并保留准确的宽高和描述性 `alt`。
+- Open Graph 暂时使用 PNG，兼容更多社交抓取器。
+
+## SEO / GEO 基线
+
+- `robots.txt` 允许普通搜索引擎与 `OAI-SearchBot` 抓取。
+- 默认阻止 `GPTBot`，仅控制潜在训练使用，不影响 ChatGPT 搜索抓取；如品牌策略改变再调整。
+- `sitemap.xml` 仅包含 canonical 且允许索引的页面。
+- 首页声明 `WebSite`、`ProfilePage`、`Person`；项目集合使用 `CollectionPage` / `ItemList`；项目详情使用 `WebPage`、`SoftwareApplication` 和 `BreadcrumbList`。
+- 结构化数据必须与页面可见内容一致。
+- 上线后在 Google Search Console、Bing Webmaster Tools 和百度搜索资源平台验证域名并提交 sitemap。
+
+## Nginx 与正式域名
+
+目标生产结构为 Ubuntu Nginx。代码仓库不保留 GitHub Pages 专用 `CNAME`；部署时应把首页、内页目录、SEO 文件、CSS、JavaScript 和新增 WebP 一起同步到站点根目录。Nginx 需要使用 `try_files $uri $uri/ =404;`，并将 404 错误页指向 `/404.html`。
+
+截至 2026-08-09，本地改版仍未提交、推送或部署；`main` 与 `origin/main` 仍指向 `b78dc6e`。正式域名已有 DNS 记录，但从当前验证环境连接其 HTTP/HTTPS 源站均超时，因此线上状态为 `pending`，不能把本地验收结果当作已上线结果。
+
+建议为带版本号或文件名稳定的静态资源配置长期缓存；HTML、`robots.txt` 和 `sitemap.xml` 使用较短缓存，确保内容更新能及时被抓取。
+
+部署后至少检查：
+
+```text
+https://summer2077.com/
+https://summer2077.com/robots.txt
+https://summer2077.com/sitemap.xml
+https://summer2077.com/about/
+https://summer2077.com/projects/easy-resume/
+https://summer2077.com/projects/tabifun/
+https://summer2077.com/projects/ai-wardrobe/
 ```
-git init
-git add .
-git commit -m "init homepage"
-git branch -M main
-git remote add origin https://github.com/你的用户名/homepage.git
-git push -u origin main
-```
 
-3. 仓库 Settings → Pages → Source 选 `Deploy from a branch`，分支 `main`、目录 `/ (root)`，保存。
-4. 一两分钟后访问 `https://你的用户名.github.io/homepage/`。
+## 视觉与交互约定
 
-Vercel / Netlify 也可以，把目录拖进去即可，无需配置。
-
-## 改主题色
-
-css/style.css 顶部 `:root` 里的 `--accent`，目前是橙红 `#ff4d2e`。
-
-## 宽屏适配
-
-所有内容收在 1200px 居中容器里，超宽显示器上左右不会拉得过开。想调内容宽度，改 `:root` 里 `--gutter` 的 `1200px`。
+- 首屏男角色为主体，两只狗在右侧。
+- 女角色坐在 `7` 上，默认隐藏，通过悬停、键盘聚焦或触控交互出现并打开 About。
+- 所有人物和小狗保持完整静态图，不做头部或眼睛跟随。
+- 角色按图片真实可见脚底或爪底对齐。
+- 主题色在 `css/style.css` 的 `--accent`，当前为 `#ff4d2e`。

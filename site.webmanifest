@@ -1,0 +1,19 @@
+{
+  "name": "summer2077",
+  "short_name": "summer2077",
+  "description": "summer2077 的 AI 产品与独立开发作品集",
+  "lang": "zh-CN",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ff4d2e",
+  "icons": [
+    {
+      "src": "/assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
