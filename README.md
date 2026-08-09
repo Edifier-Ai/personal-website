@@ -82,7 +82,7 @@ python -m http.server 8000
 
 目标生产结构为 Ubuntu Nginx。代码仓库不保留 GitHub Pages 专用 `CNAME`；部署时应把首页、内页目录、SEO 文件、CSS、JavaScript 和新增 WebP 一起同步到站点根目录。Nginx 需要使用 `try_files $uri $uri/ =404;`，并将 404 错误页指向 `/404.html`。
 
-截至 2026-08-09，本地改版仍未提交、推送或部署；`main` 与 `origin/main` 仍指向 `b78dc6e`。正式域名已有 DNS 记录，但从当前验证环境连接其 HTTP/HTTPS 源站均超时，因此线上状态为 `pending`，不能把本地验收结果当作已上线结果。
+截至 2026-08-09，站点改版已提交并推送为 `02dec82`，并部署到 Ubuntu Nginx release `20260809T084129Z`；`/var/www/personal-site/current` 已原子切换到该 release，旧 release `20260809T001` 保留用于回滚。正式域名首页、About、项目集合、三个项目案例、robots、sitemap 与关键图片均已从外部验证，未知路径返回 404。当前未提交变更仅为 23 个无引用旧素材的清场删除和部署状态文档同步。
 
 建议为带版本号或文件名稳定的静态资源配置长期缓存；HTML、`robots.txt` 和 `sitemap.xml` 使用较短缓存，确保内容更新能及时被抓取。
 
