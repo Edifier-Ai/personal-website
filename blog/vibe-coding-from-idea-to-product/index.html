@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vibe Coding 是什么：独立开发者如何把想法做成产品｜summer2077</title>
+  <meta name="description" content="summer2077 结合独立开发实践，解释 Vibe Coding 如何用于问题定义、最小范围、实现、验证与发布，以及 AI 协作最容易踩的坑。">
+  <meta name="author" content="summer2077">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="theme-color" content="#ff4d2e">
+  <link rel="canonical" href="https://summer2077.com/blog/vibe-coding-from-idea-to-product/">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="summer2077">
+  <meta property="og:title" content="Vibe Coding 是什么：独立开发者如何把想法做成产品">
+  <meta property="og:description" content="让 AI 提速，同时把产品判断、验证标准和最终责任留在人手里。">
+  <meta property="og:url" content="https://summer2077.com/blog/vibe-coding-from-idea-to-product/">
+  <meta property="og:image" content="https://summer2077.com/assets/hero-me-lean-v2.png">
+  <meta property="og:image:alt" content="summer2077 靠在字母旁的 Q 版形象">
+  <meta property="article:published_time" content="2026-08-13">
+  <meta property="article:modified_time" content="2026-08-13">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Vibe Coding 是什么：独立开发者如何把想法做成产品">
+  <meta name="twitter:description" content="一套从问题、范围、实现到验收的独立开发工作方式。">
+  <meta name="twitter:image" content="https://summer2077.com/assets/hero-me-lean-v2.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "@id": "https://summer2077.com/blog/vibe-coding-from-idea-to-product/#article",
+        "url": "https://summer2077.com/blog/vibe-coding-from-idea-to-product/",
+        "headline": "Vibe Coding 是什么：独立开发者如何把想法做成产品",
+        "description": "结合独立开发实践，说明 Vibe Coding 如何用于问题定义、范围控制、实现、验证与发布。",
+        "datePublished": "2026-08-13",
+        "dateModified": "2026-08-13",
+        "inLanguage": "zh-CN",
+        "author": { "@id": "https://summer2077.com/#person" },
+        "publisher": { "@id": "https://summer2077.com/#person" },
+        "isPartOf": { "@id": "https://summer2077.com/blog/#webpage" },
+        "mainEntityOfPage": { "@id": "https://summer2077.com/blog/vibe-coding-from-idea-to-product/#webpage" },
+        "image": "https://summer2077.com/assets/hero-me-lean-v2.png",
+        "keywords": ["Vibe Coding", "独立开发", "AI 产品", "AI 编程"]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://summer2077.com/blog/vibe-coding-from-idea-to-product/#webpage",
+        "url": "https://summer2077.com/blog/vibe-coding-from-idea-to-product/",
+        "name": "Vibe Coding 是什么：独立开发者如何把想法做成产品",
+        "isPartOf": { "@id": "https://summer2077.com/#website" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://summer2077.com/" },
+          { "@type": "ListItem", "position": 2, "name": "实践笔记", "item": "https://summer2077.com/blog/" },
+          { "@type": "ListItem", "position": 3, "name": "Vibe Coding 是什么", "item": "https://summer2077.com/blog/vibe-coding-from-idea-to-product/" }
+        ]
+      }
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="/css/style.css?v=20260813-3">
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?30152a06c6c0e47f34a391e816362e80";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</head>
+<body>
+  <div class="progress" aria-hidden="true"><span id="bar"></span></div>
+  <header class="nav">
+    <a class="nav-logo" href="/" aria-label="summer2077 首页"><span class="dot"></span>summer2077<sup>®</sup></a>
+    <div class="nav-right"><nav class="site-nav" aria-label="主导航"><a href="/projects/">作品</a><a href="/blog/" aria-current="page">博客</a><a href="/about/">关于</a><a href="/#contact">联系</a></nav><span class="progress-value" id="progress-value" aria-hidden="true">00</span><a class="nav-gh" href="https://github.com/Edifier-Ai" target="_blank" rel="me noopener" aria-label="summer2077 的 GitHub">GitHub</a></div>
+  </header>
+
+  <main class="page-main">
+    <nav class="breadcrumbs" aria-label="面包屑"><ol><li><a href="/">首页</a></li><li><a href="/blog/">实践笔记</a></li><li aria-current="page">Vibe Coding 是什么</li></ol></nav>
+    <header class="page-hero article-hero reveal">
+      <p class="page-eyebrow">VIBE CODING / 独立开发</p>
+      <h1>Vibe Coding 是什么：独立开发者如何把想法做成产品</h1>
+      <p class="page-lede">AI 可以让探索和实现更快，但不会自动替你找到正确问题。对我来说，Vibe Coding 的价值是缩短“想法—验证”之间的距离，产品判断、验收标准和发布责任仍然由人承担。</p>
+      <p class="article-meta"><span>作者：summer2077</span><span>发布：2026-08-13</span><span>阅读主题：AI 产品 / 独立开发</span></p>
+    </header>
+
+    <article class="content-section article-layout reveal">
+      <div class="article-body">
+        <h2 id="definition">先给 Vibe Coding 一个可执行的定义</h2>
+        <p>如果只把 Vibe Coding 理解成“用一句话让 AI 生成代码”，很容易得到一个看起来完成、实际上无法交付的演示。我的定义更具体：<strong>人负责问题、边界和质量，AI 负责加速探索、实现与检查，双方围绕可以验证的结果持续迭代。</strong></p>
+        <p>这套方式不排斥产品文档、设计或工程规范。恰恰相反，越希望 AI 提速，越需要把目标、约束、禁止项和退出条件说清楚。提示词不是魔法咒语，它更像一份压缩后的工作说明。</p>
+        <div class="article-callout">判断一次 AI 协作是否有效，不看生成了多少代码，而看它是否更快地消除了一个真实风险：用户是否需要、流程是否可用、结果是否正确、发布是否安全。</div>
+
+        <h2 id="workflow">我使用的五步工作流</h2>
+        <h3>1. 先写用户任务，不先写功能清单</h3>
+        <p>我会先问：用户在什么场景下卡住？他完成任务后应该得到什么变化？例如 <a href="/projects/easy-resume/">Easy Resume</a> 的重点不是“接入 AI”，而是让用户能边写边看、定位简历问题，并决定是否采纳建议；<a href="/projects/tabifun/">TabiFun</a> 关注的是如何把散落的旅行照片重新组织成地点和路线；<a href="/projects/ai-wardrobe/">AI 衣橱</a> 则要把衣物入库、穿搭选择和旅行打包连成一条真正可用的任务链。</p>
+
+        <h3>2. 把第一版缩成一个可以闭环的范围</h3>
+        <p>最小版本不是把每个功能都做得很浅，而是选择一个核心任务完整走通。范围需要同时写清“这版必须有”和“这版明确不做”。后者尤其重要，它能减少 AI 在模糊区域里主动扩张需求。</p>
+
+        <h3>3. 让 AI 分块实现，每块都能单独检查</h3>
+        <p>页面结构、状态、数据规则、导出、异常路径最好分开处理。每次只交付一个可以运行和验证的切片，并保留已经工作的确定性演示。这样遇到错误时，能够知道问题来自哪一层，而不是在一大段生成结果里猜。</p>
+
+        <h3>4. 用证据验收，不用“看起来不错”验收</h3>
+        <p>静态页面要检查真实 HTTP 路由、移动端、键盘操作、控制台和资源加载；导出文件要打开并查看实际结果；桌面或移动产品还要区分本地测试、运行时、CI、部署和真机证据。不同层级的“通过”不能互相代替。</p>
+
+        <h3>5. 发布时保留回滚与事实边界</h3>
+        <p>发布前需要知道改了什么、如何验证、失败后怎么恢复。文案里也只写已经能证明的能力，不用计划中的功能冒充当前能力。对独立开发者来说，可信度本身就是产品资产。</p>
+
+        <h2 id="pitfalls">最常见的三个坑</h2>
+        <ul>
+          <li><strong>把生成速度当成交付速度：</strong>代码出现得快，不等于需求正确、边界完整或体验可用。</li>
+          <li><strong>没有采用门槛：</strong>AI 给出的改写、建议或自动操作如果直接覆盖原内容，用户会失去判断权。更稳妥的方式是先预览，再明确采纳。</li>
+          <li><strong>没有退出条件：</strong>只写“优化一下”会让工作无限延伸。应该提前定义哪些检查通过才算完成，哪些外部条件尚未验证。</li>
+        </ul>
+
+        <h2 id="when-to-use">什么时候适合，什么时候不适合</h2>
+        <p>Vibe Coding 很适合原型验证、内部工具、静态网站、清晰边界内的产品迭代，也适合让一个人快速验证多种方案。涉及资金、隐私、医疗、法律、高风险自动操作时，它仍可以协助，但需要更严格的人工审核、安全测试和权限边界。</p>
+        <p>我的判断标准很简单：如果一项工作可以被拆成清晰目标、可观察结果和安全回滚，AI 就很适合加入；如果连问题和责任人都不清楚，先补产品判断，不要急着生成代码。</p>
+
+        <h2 id="summary">最后：Vibe Coding 不是少思考，而是让思考更快落地</h2>
+        <p>真正有价值的不是“我用 AI 做了一个东西”，而是更快地找到值得解决的问题，做出可以被使用的版本，并用证据说明它已经走到哪一步。AI 缩短实现时间，人仍然负责方向、取舍和结果。</p>
+
+        <div class="related-notes">
+          <h2>继续阅读</h2>
+          <div class="page-actions"><a class="go" href="/blog/ai-product-validation-checklist/">AI 产品验证检查清单 <span class="arr">→</span></a><a class="go alt" href="/projects/">查看公开项目</a></div>
+        </div>
+      </div>
+
+      <aside class="article-nav" aria-label="文章目录">
+        <strong>文章目录</strong>
+        <ol>
+          <li><a href="#definition">可执行的定义</a></li>
+          <li><a href="#workflow">五步工作流</a></li>
+          <li><a href="#pitfalls">常见的坑</a></li>
+          <li><a href="#when-to-use">适用边界</a></li>
+          <li><a href="#summary">总结</a></li>
+        </ol>
+      </aside>
+    </article>
+  </main>
+
+  <footer><div class="footer-inner"><span>© <span id="year">2026</span> summer2077®</span><nav class="footer-nav" aria-label="页脚导航"><a href="/">首页</a><a href="/projects/">作品</a><a href="/blog/">博客</a><a href="/about/">关于</a></nav></div></footer>
+  <div id="cursor" aria-hidden="true"></div>
+  <script src="/js/main.js?v=20260809-17"></script>
+</body>
+</html>

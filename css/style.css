@@ -411,6 +411,40 @@ body.cursor-on #cursor{opacity:.85}
 .feature-list strong{display:block;margin-bottom:8px;font-size:18px}
 .status-note{max-width:780px;margin-top:28px;padding:18px 20px;border-radius:12px;background:var(--soft);color:#555;font-size:14px}
 .meta-row{display:flex;gap:16px;flex-wrap:wrap;margin-top:26px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.notes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:34px}
+.note-card{
+  display:flex;min-height:260px;flex-direction:column;align-items:flex-start;gap:16px;
+  padding:clamp(24px,3vw,36px);border:1px solid var(--line);border-radius:var(--radius);background:#fff;
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+}
+.note-card:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 18px 44px -28px rgba(20,20,20,.45)}
+.note-card .page-eyebrow{margin-bottom:0}
+.note-card h3{font-size:clamp(22px,2.4vw,32px);line-height:1.3}
+.note-card p{color:var(--muted)}
+.note-card .text-link{margin-top:auto}
+.article-hero{padding-bottom:clamp(48px,7vw,84px)}
+.article-hero h1{max-width:1080px;font-size:clamp(42px,7vw,92px);line-height:1.08}
+.article-meta{display:flex;gap:12px 22px;flex-wrap:wrap;margin-top:28px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.article-layout{display:grid;grid-template-columns:minmax(0,760px) minmax(220px,300px);gap:clamp(48px,8vw,120px);align-items:start}
+.article-body{max-width:760px;font-size:clamp(16px,1.5vw,19px);color:#333}
+.article-body h2{margin:2.2em 0 .75em;font-size:clamp(28px,3.5vw,44px);line-height:1.25;color:var(--ink)}
+.article-body h2:first-child{margin-top:0}
+.article-body h3{margin:1.8em 0 .6em;font-size:clamp(20px,2.3vw,28px);color:var(--ink)}
+.article-body h2,.article-body h3{scroll-margin-top:calc(var(--nav-h) + 44px)}
+.article-body p+p{margin-top:1.15em}
+.article-body ul,.article-body ol{margin:1.2em 0 1.4em;padding-left:1.35em}
+.article-body li+li{margin-top:.65em}
+.article-body strong{color:var(--ink)}
+.article-body a{font-weight:700;border-bottom:1px solid var(--ink)}
+.article-body a:hover{color:var(--accent);border-color:var(--accent)}
+.article-callout{margin:1.7em 0;padding:20px 22px;border-left:3px solid var(--accent);background:var(--soft);color:#444}
+.article-nav{position:sticky;top:calc(var(--nav-h) + 28px);padding:22px;border:1px solid var(--line);border-radius:var(--radius);background:#fff}
+.article-nav strong{display:block;margin-bottom:12px;font-size:14px}
+.article-nav ol{padding-left:1.2em;color:var(--muted);font-size:13px}
+.article-nav li+li{margin-top:8px}
+.article-nav a:hover{color:var(--accent)}
+.related-notes{margin-top:52px;padding-top:28px;border-top:1px solid var(--line)}
+.related-notes h2{margin:0 0 20px;font-size:clamp(24px,3vw,34px)}
 .error-page{min-height:calc(100vh - var(--nav-h));display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:80px var(--gutter)}
 .error-code{font-size:clamp(96px,22vw,280px);font-weight:800;line-height:.8;color:transparent;-webkit-text-stroke:2px var(--accent)}
 .error-page h1{font-size:clamp(30px,5vw,64px);margin-top:36px}
@@ -439,6 +473,13 @@ body.cursor-on #cursor{opacity:.85}
   .works-shell{padding-top:72px}
   .contact{padding-top:88px;padding-bottom:72px}
   .footer-inner{align-items:flex-start;flex-direction:column}
+  .article-layout{grid-template-columns:1fr}
+  .article-nav{position:static;order:-1}
+}
+@media (max-width:560px){
+  .site-nav a[href="/#contact"]{display:none}
+  .notes-grid{grid-template-columns:1fr}
+  .note-card{min-height:0}
 }
 @media (max-width:420px){
   /* 末尾 7 靠近窄屏右缘时，保留完整人物，避免透明画布被裁切。 */

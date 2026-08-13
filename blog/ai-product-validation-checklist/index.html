@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 产品从想法到可验证版本：我的独立开发检查清单｜summer2077</title>
+  <meta name="description" content="一份面向独立开发者的 AI 产品验证清单：从真实问题、最小闭环、采用门槛，到运行时证据、发布边界和数据复盘。">
+  <meta name="author" content="summer2077">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="theme-color" content="#ff4d2e">
+  <link rel="canonical" href="https://summer2077.com/blog/ai-product-validation-checklist/">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="summer2077">
+  <meta property="og:title" content="AI 产品从想法到可验证版本：我的独立开发检查清单">
+  <meta property="og:description" content="用用户任务、最小闭环、真实证据和发布边界判断产品是否真的完成。">
+  <meta property="og:url" content="https://summer2077.com/blog/ai-product-validation-checklist/">
+  <meta property="og:image" content="https://summer2077.com/assets/easy-resume-01.png">
+  <meta property="og:image:width" content="1672">
+  <meta property="og:image:height" content="941">
+  <meta property="og:image:alt" content="Easy Resume 简历编辑器与实时预览界面">
+  <meta property="article:published_time" content="2026-08-13">
+  <meta property="article:modified_time" content="2026-08-13">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI 产品从想法到可验证版本：我的独立开发检查清单">
+  <meta name="twitter:description" content="一套从问题、范围、证据到发布的独立开发检查清单。">
+  <meta name="twitter:image" content="https://summer2077.com/assets/easy-resume-01.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "@id": "https://summer2077.com/blog/ai-product-validation-checklist/#article",
+        "url": "https://summer2077.com/blog/ai-product-validation-checklist/",
+        "headline": "AI 产品从想法到可验证版本：我的独立开发检查清单",
+        "description": "面向独立开发者的 AI 产品验证清单，覆盖真实问题、最小闭环、采用门槛、运行时证据与发布边界。",
+        "datePublished": "2026-08-13",
+        "dateModified": "2026-08-13",
+        "inLanguage": "zh-CN",
+        "author": { "@id": "https://summer2077.com/#person" },
+        "publisher": { "@id": "https://summer2077.com/#person" },
+        "isPartOf": { "@id": "https://summer2077.com/blog/#webpage" },
+        "mainEntityOfPage": { "@id": "https://summer2077.com/blog/ai-product-validation-checklist/#webpage" },
+        "image": "https://summer2077.com/assets/easy-resume-01.png",
+        "keywords": ["AI 产品", "独立开发", "产品验证", "最小可行产品"]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://summer2077.com/blog/ai-product-validation-checklist/#webpage",
+        "url": "https://summer2077.com/blog/ai-product-validation-checklist/",
+        "name": "AI 产品从想法到可验证版本：我的独立开发检查清单",
+        "isPartOf": { "@id": "https://summer2077.com/#website" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://summer2077.com/" },
+          { "@type": "ListItem", "position": 2, "name": "实践笔记", "item": "https://summer2077.com/blog/" },
+          { "@type": "ListItem", "position": 3, "name": "AI 产品验证检查清单", "item": "https://summer2077.com/blog/ai-product-validation-checklist/" }
+        ]
+      }
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="/css/style.css?v=20260813-3">
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?30152a06c6c0e47f34a391e816362e80";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</head>
+<body>
+  <div class="progress" aria-hidden="true"><span id="bar"></span></div>
+  <header class="nav">
+    <a class="nav-logo" href="/" aria-label="summer2077 首页"><span class="dot"></span>summer2077<sup>®</sup></a>
+    <div class="nav-right"><nav class="site-nav" aria-label="主导航"><a href="/projects/">作品</a><a href="/blog/" aria-current="page">博客</a><a href="/about/">关于</a><a href="/#contact">联系</a></nav><span class="progress-value" id="progress-value" aria-hidden="true">00</span><a class="nav-gh" href="https://github.com/Edifier-Ai" target="_blank" rel="me noopener" aria-label="summer2077 的 GitHub">GitHub</a></div>
+  </header>
+
+  <main class="page-main">
+    <nav class="breadcrumbs" aria-label="面包屑"><ol><li><a href="/">首页</a></li><li><a href="/blog/">实践笔记</a></li><li aria-current="page">AI 产品验证检查清单</li></ol></nav>
+    <header class="page-hero article-hero reveal">
+      <p class="page-eyebrow">AI PRODUCT / 产品验证</p>
+      <h1>AI 产品从想法到可验证版本：我的独立开发检查清单</h1>
+      <p class="page-lede">一个 AI 产品不是在界面做完时完成，而是在核心用户任务可运行、关键风险有证据、发布范围与未验证项都说清楚时，才真正进入可验证状态。</p>
+      <p class="article-meta"><span>作者：summer2077</span><span>发布：2026-08-13</span><span>阅读主题：AI 产品 / 产品验证</span></p>
+    </header>
+
+    <article class="content-section article-layout reveal">
+      <div class="article-body">
+        <h2 id="problem">一、问题：它解决的是任务，还是只展示 AI 能力？</h2>
+        <p>我会先用一句不包含技术名词的话描述用户任务。例如：修改简历时能及时发现问题并看到最终版式；从旅行照片里重新找到地点与路线；根据已有衣物、天气和场景完成穿搭并生成不重复的行李清单。</p>
+        <p>如果一句话里只能看到“大模型、识别、生成、智能推荐”，却看不到用户在什么时刻得到什么结果，说明产品还停留在能力展示阶段。</p>
+        <ul>
+          <li>用户是谁，在哪个具体场景下遇到问题？</li>
+          <li>不用这个产品时，他现在怎样完成任务？</li>
+          <li>第一版只改善哪一个关键环节？</li>
+          <li>结果怎样被用户检查、修改或拒绝？</li>
+        </ul>
+
+        <h2 id="scope">二、范围：第一版是否形成最小闭环？</h2>
+        <p>最小闭环至少包括输入、处理、结果与下一步行动。只有一个“生成”按钮通常不够，因为用户还需要理解结果、纠正错误并把结果带回自己的工作流。</p>
+        <div class="article-callout">范围控制的关键不是少做页面，而是确保一个任务从开始到结束可以走通，同时明确暂时不做的能力。</div>
+        <p>以公开案例为例：<a href="/projects/easy-resume/">Easy Resume</a> 把编辑、实时预览、问题定位和用户采纳连接起来；<a href="/projects/tabifun/">TabiFun</a> 围绕照片、地点、路线和地图回看组织体验；<a href="/projects/ai-wardrobe/">AI 衣橱</a> 则把入库、每日选择与旅行打包放在同一条生活任务中。它们的共同点不是都使用 AI，而是都有可说明的用户闭环。</p>
+
+        <h2 id="control">三、控制：AI 结果是否给用户保留决定权？</h2>
+        <p>生成内容、改写原文、识别照片或自动整理清单都可能出错。产品需要把不确定性变成可操作界面，而不是隐藏起来。</p>
+        <ol>
+          <li><strong>先预览：</strong>在写回原数据之前展示建议、差异和影响范围。</li>
+          <li><strong>可采纳：</strong>让用户明确选择接受、拒绝或局部修改。</li>
+          <li><strong>可恢复：</strong>保存原内容或提供撤销，避免一次错误破坏用户资产。</li>
+          <li><strong>不编造：</strong>缺少事实时明确提示，不自动补数字、经历或地点。</li>
+        </ol>
+
+        <h2 id="evidence">四、证据：你证明的是哪一层完成？</h2>
+        <p>我把完成证据分成几个不能互相替代的层级：</p>
+        <ul>
+          <li><strong>静态检查：</strong>HTML、脚本、链接、元数据和配置格式正确。</li>
+          <li><strong>本地运行：</strong>通过真实 HTTP 或应用运行环境打开，主要流程可以操作。</li>
+          <li><strong>视觉与文件结果：</strong>移动端没有溢出，导出的 PDF、图片或安装包需要真正打开检查。</li>
+          <li><strong>自动化与 CI：</strong>测试和构建在目标系统通过，不能被管道吞掉退出码。</li>
+          <li><strong>生产或真机：</strong>部署后的域名、接口、监控，或实体设备上的权限、性能和兼容性得到验证。</li>
+        </ul>
+        <p>只完成其中一层，就只报告这一层。清楚地说“本地已通过、生产待验证”比一句模糊的“全部完成”更可靠。</p>
+
+        <h2 id="release">五、发布：是否有回滚、监控和事实边界？</h2>
+        <p>发布前我会记录当前版本、新版本、切换方式与恢复路径。静态站可以用版本目录和符号链接原子切换；应用需要保留数据库、环境变量和健康检查的边界。发布后要从外部验证正式 URL，而不是只看服务器内部返回 200。</p>
+        <p>内容同样需要事实边界。产品页写已经存在并能验证的能力；正在开发的新版、尚未公开的仓库和依赖外部权限的功能，都应明确标注状态。</p>
+
+        <h2 id="measure">六、数据：下一轮依据什么继续？</h2>
+        <p>早期产品不需要一开始就建立复杂指标体系，但至少要知道当前假设和观察信号。搜索内容可以看抓取、索引、搜索词、点击和到站后的行动；产品流程可以看用户是否走完核心任务、在哪一步退出、哪些建议被采纳。</p>
+        <p>数据的作用不是证明自己原来就对，而是帮助决定：继续、修改、缩小，还是停止。</p>
+
+        <h2 id="checklist">发布前的简版清单</h2>
+        <ul>
+          <li>能够用一句用户任务解释产品，不依赖 AI 术语。</li>
+          <li>第一版核心流程从输入到结果可以完整走通。</li>
+          <li>AI 结果有预览、采纳、拒绝或恢复机制。</li>
+          <li>没有用演示数据冒充真实结果，没有补造缺失事实。</li>
+          <li>本地、自动化、生产或真机证据被分别记录。</li>
+          <li>失败时有恢复路径，发布后有可观察信号。</li>
+          <li>页面、文档和对外文案与当前真实状态一致。</li>
+        </ul>
+
+        <div class="related-notes">
+          <h2>继续阅读</h2>
+          <div class="page-actions"><a class="go" href="/blog/vibe-coding-from-idea-to-product/">Vibe Coding 工作方式 <span class="arr">→</span></a><a class="go alt" href="/projects/">查看公开案例</a></div>
+        </div>
+      </div>
+
+      <aside class="article-nav" aria-label="文章目录">
+        <strong>文章目录</strong>
+        <ol>
+          <li><a href="#problem">真实问题</a></li>
+          <li><a href="#scope">最小闭环</a></li>
+          <li><a href="#control">用户控制</a></li>
+          <li><a href="#evidence">完成证据</a></li>
+          <li><a href="#release">发布边界</a></li>
+          <li><a href="#measure">数据复盘</a></li>
+          <li><a href="#checklist">简版清单</a></li>
+        </ol>
+      </aside>
+    </article>
+  </main>
+
+  <footer><div class="footer-inner"><span>© <span id="year">2026</span> summer2077®</span><nav class="footer-nav" aria-label="页脚导航"><a href="/">首页</a><a href="/projects/">作品</a><a href="/blog/">博客</a><a href="/about/">关于</a></nav></div></footer>
+  <div id="cursor" aria-hidden="true"></div>
+  <script src="/js/main.js?v=20260809-17"></script>
+</body>
+</html>

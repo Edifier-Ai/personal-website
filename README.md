@@ -12,10 +12,13 @@
 ├── projects/easy-resume/index.html    Easy Resume 案例页
 ├── projects/tabifun/index.html        TabiFun 旅行地图案例页
 ├── projects/ai-wardrobe/index.html    AI 衣橱案例页
+├── blog/index.html                    实践笔记列表页
+├── blog/*/index.html                  原创文章页
 ├── 404.html                           自定义 404（noindex）
 ├── robots.txt                         搜索与 AI crawler 规则
 ├── sitemap.xml                        可索引 URL 清单
 ├── site.webmanifest                   站点清单
+├── deploy/nginx-static-cache.conf     生产静态资源缓存片段
 ├── css/style.css                      全站样式
 ├── js/main.js                         渐进增强、Tab、轮播和灯箱
 └── assets/                            形象图、项目截图和 WebP 版本
@@ -26,7 +29,7 @@
 - 正式品牌：`summer2077`
 - 正式域名：`https://summer2077.com/`
 - GitHub：`https://github.com/Edifier-Ai`
-- Easy Resume：`https://github.com/Edifier-Ai/EasyResume`
+- Easy Resume：`https://resume.esaylab.com/`，源码 `https://github.com/Edifier-Ai/EasyResume`
 - TabiFun：旅行地图项目，GitHub 地址待公布
 - AI 衣橱：智能穿搭项目，GitHub 地址待公布
 - Email：`summer0420@vip.qq.com`
@@ -51,6 +54,9 @@ python -m http.server 8000
 - `http://localhost:8000/projects/easy-resume/`
 - `http://localhost:8000/projects/tabifun/`
 - `http://localhost:8000/projects/ai-wardrobe/`
+- `http://localhost:8000/blog/`
+- `http://localhost:8000/blog/vibe-coding-from-idea-to-product/`
+- `http://localhost:8000/blog/ai-product-validation-checklist/`
 
 ## 内容发布规则
 
@@ -60,6 +66,8 @@ python -m http.server 8000
 4. 新增或删除页面时同步更新 `sitemap.xml`。
 5. `dateModified` 和 sitemap `lastmod` 只在内容确实发生变化时更新。
 6. 项目案例优先补充：问题、目标用户、个人职责、产品取舍、技术方案、真实结果、演示地址和公开代码。
+7. 博客文章必须有独立搜索意图、作者、发布日期、更新时间、正文、相关内链和匹配正文的 `BlogPosting` 数据；不设固定字数或发布数量。
+8. 官网首发内容是长期资产；百度知道、文库、百家号等站外渠道只做真实分发，不做自问自答、批量铺量或洗稿。
 
 ## 图片策略
 
@@ -85,6 +93,7 @@ python -m http.server 8000
 截至 2026-08-09，站点改版已提交并推送为 `02dec82`，并部署到 Ubuntu Nginx release `20260809T084129Z`；`/var/www/personal-site/current` 已原子切换到该 release，旧 release `20260809T001` 保留用于回滚。正式域名首页、About、项目集合、三个项目案例、robots、sitemap 与关键图片均已从外部验证，未知路径返回 404。当前未提交变更仅为 23 个无引用旧素材的清场删除和部署状态文档同步。
 
 建议为带版本号或文件名稳定的静态资源配置长期缓存；HTML、`robots.txt` 和 `sitemap.xml` 使用较短缓存，确保内容更新能及时被抓取。
+仓库中的 `deploy/nginx-static-cache.conf` 是当前生产缓存策略的可审计副本，不应复制到公开 Web 根目录。
 
 部署后至少检查：
 
