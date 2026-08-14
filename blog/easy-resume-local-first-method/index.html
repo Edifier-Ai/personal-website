@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我如何把 Easy Resume 做成可验证的 Local First AI 简历工具｜summer2077</title>
+  <meta name="description" content="Easy Resume 独立开发实录：为什么选择 Local First，如何处理 AI 建议采纳、规则透明、ATS 文本层、PDF 一致性和生产验证。">
+  <meta name="author" content="summer2077">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="theme-color" content="#ff4d2e">
+  <link rel="canonical" href="https://summer2077.com/blog/easy-resume-local-first-method/">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="summer2077">
+  <meta property="og:title" content="我如何把 Easy Resume 做成可验证的 Local First AI 简历工具">
+  <meta property="og:description" content="从数据边界、建议采纳、规则透明到 PDF 与生产验证，记录 Easy Resume 的产品方法。">
+  <meta property="og:url" content="https://summer2077.com/blog/easy-resume-local-first-method/">
+  <meta property="og:image" content="https://summer2077.com/assets/easy-resume-01.png">
+  <meta property="og:image:width" content="1672">
+  <meta property="og:image:height" content="941">
+  <meta property="og:image:alt" content="Easy Resume 简历编辑器与实时预览界面">
+  <meta property="article:published_time" content="2026-08-14">
+  <meta property="article:modified_time" content="2026-08-14">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="我如何把 Easy Resume 做成可验证的 Local First AI 简历工具">
+  <meta name="twitter:description" content="Easy Resume 的数据边界、AI 采纳、规则透明与交付验证实践。">
+  <meta name="twitter:image" content="https://summer2077.com/assets/easy-resume-01.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "@id": "https://summer2077.com/blog/easy-resume-local-first-method/#article",
+        "url": "https://summer2077.com/blog/easy-resume-local-first-method/",
+        "headline": "我如何把 Easy Resume 做成可验证的 Local First AI 简历工具",
+        "description": "Easy Resume 独立开发实录，覆盖 Local First 数据边界、AI 建议采纳、规则透明、ATS 文本层、PDF 一致性与生产验证。",
+        "datePublished": "2026-08-14",
+        "dateModified": "2026-08-14",
+        "inLanguage": "zh-CN",
+        "author": { "@id": "https://summer2077.com/#person" },
+        "publisher": { "@id": "https://summer2077.com/#person" },
+        "isPartOf": { "@id": "https://summer2077.com/blog/#webpage" },
+        "mainEntityOfPage": { "@id": "https://summer2077.com/blog/easy-resume-local-first-method/#webpage" },
+        "image": "https://summer2077.com/assets/easy-resume-01.png",
+        "about": { "@id": "https://summer2077.com/projects/easy-resume/#software" },
+        "keywords": ["Easy Resume", "Local First", "AI 简历", "ATS", "独立开发"]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://summer2077.com/blog/easy-resume-local-first-method/#webpage",
+        "url": "https://summer2077.com/blog/easy-resume-local-first-method/",
+        "name": "我如何把 Easy Resume 做成可验证的 Local First AI 简历工具",
+        "isPartOf": { "@id": "https://summer2077.com/#website" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://summer2077.com/" },
+          { "@type": "ListItem", "position": 2, "name": "实践笔记", "item": "https://summer2077.com/blog/" },
+          { "@type": "ListItem", "position": 3, "name": "Easy Resume Local First 方法", "item": "https://summer2077.com/blog/easy-resume-local-first-method/" }
+        ]
+      }
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="/css/style.css?v=20260813-3">
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?30152a06c6c0e47f34a391e816362e80";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+</head>
+<body>
+  <div class="progress" aria-hidden="true"><span id="bar"></span></div>
+  <header class="nav">
+    <a class="nav-logo" href="/" aria-label="summer2077 首页"><span class="dot"></span>summer2077<sup>®</sup></a>
+    <div class="nav-right"><nav class="site-nav" aria-label="主导航"><a href="/projects/">作品</a><a href="/blog/" aria-current="page">博客</a><a href="/about/">关于</a><a href="/#contact">联系</a></nav><span class="progress-value" id="progress-value" aria-hidden="true">00</span><a class="nav-gh" href="https://github.com/Edifier-Ai" target="_blank" rel="me noopener" aria-label="summer2077 的 GitHub">GitHub</a></div>
+  </header>
+
+  <main class="page-main">
+    <nav class="breadcrumbs" aria-label="面包屑"><ol><li><a href="/">首页</a></li><li><a href="/blog/">实践笔记</a></li><li aria-current="page">Easy Resume Local First 方法</li></ol></nav>
+    <header class="page-hero article-hero reveal">
+      <p class="page-eyebrow">EASY RESUME / 产品方法</p>
+      <h1>我如何把 Easy Resume 做成可验证的 Local First AI 简历工具</h1>
+      <p class="page-lede">简历里包含姓名、联系方式、教育与工作经历。对这类高敏感内容，AI 功能是否“能生成”只是起点；数据去了哪里、建议怎样被采用、结果能否复核，才决定产品是否可信。</p>
+      <p class="article-meta"><span>作者：summer2077</span><span>发布：2026-08-14</span><span>阅读主题：AI 简历 / Local First / 产品验证</span></p>
+    </header>
+
+    <article class="content-section article-layout reveal">
+      <div class="article-body">
+        <h2 id="problem">一、先定义问题：不是“让 AI 替用户写简历”</h2>
+        <p>我做 <a href="https://resume.esaylab.com/">Easy Resume AI 简历大师</a> 时，核心任务不是一键生成一份看似完整的简历，而是让用户在编辑过程中看见最终版式、发现具体问题，并保留对每次修改的决定权。</p>
+        <p>简历工具尤其不应该替用户编造职责、项目或数字。模型可以指出证据不足、给出表达方案，但缺失事实只能由用户补充。因此产品里的 AI 改写先生成预览，标注依据与风险，只有用户点击采纳后才写回原文。</p>
+
+        <h2 id="local-first">二、为什么选择 Local First</h2>
+        <p>简历、首筛历史、模型设置和 API Key 默认保存在浏览器本地。服务端只承担必要的无状态模型转发；用户主动创建公开分享时，才保存经过脱敏的分享快照，并设置有效期。</p>
+        <div class="article-callout">Local First 不是一句隐私口号，而是一组可以检查的产品约束：默认不上传、发送前可说明、存储位置可审计、删除与过期边界明确。</div>
+        <p>我把数据流向做成产品内可查看的信息：使用预设模型时请求经过本站无状态代理；配置自定义兼容接口时由浏览器直连目标端点。两条通道的差异不能藏在隐私政策里，需要在用户操作前讲清楚。</p>
+
+        <h2 id="rules">三、把“简历体检”从黑盒变成可复核规则</h2>
+        <p>没有配置模型时，Easy Resume 仍能运行本地体检：检查信息完整度、弱动词、量化密度、结构和 JD 关键词覆盖。每个问题指向具体段落，用户可以判断建议是否成立。</p>
+        <p>规则边界和权重在公开的<a href="https://resume.esaylab.com/methodology/resume-checkup/">简历体检方法论</a>里说明。它不把启发式分数包装成招聘结论，也不承诺“提高多少通过率”。分数的用途是帮助同一位用户在修改前后发现变化，而不是替代真实招聘判断。</p>
+
+        <h2 id="ats">四、ATS 友好要验证文字层，而不只是看起来像 PDF</h2>
+        <p>简历在浏览器里排版正确，不代表导出的 PDF 能被解析。我的验收会同时检查视觉结果和文字层：页面是否分页合理、中文字体是否完整、文本能否选择复制、复制后的章节顺序是否可读。</p>
+        <p>这也是<a href="https://resume.esaylab.com/guides/ats-keywords/">ATS 简历关键词指南</a>强调“自然放进真实经历”的原因。关键词堆砌不能弥补文本层错乱，也不能证明候选人做过相关工作。</p>
+
+        <h2 id="screening">五、模拟首筛必须写清“模拟”与能力边界</h2>
+        <p>产品提供五种典型招聘视角，用于提醒用户不同岗位和组织可能关注的内容差异。这些角色都是虚构模拟，不是真人 HR，也不代表任何真实公司。无模型 Key 时只展示确定性的能力预览，不生成假装来自模型的诊断或分数。</p>
+        <p>完整流程会区分首轮印象、进一步追问和用户采纳。具体设计依据公开在<a href="https://resume.esaylab.com/methodology/six-second-screening/">六秒首筛方法论</a>，便于用户和开发者检查产品说法是否与实现一致。</p>
+
+        <h2 id="evidence">六、我怎样判断一个版本真的可以发布</h2>
+        <ul>
+          <li><strong>代码门禁：</strong>Lint、类型检查、单元测试和生产构建分别通过。</li>
+          <li><strong>浏览器流程：</strong>首页、指南、编辑器、设置和分享流程在真实 HTTP 环境操作。</li>
+          <li><strong>文件结果：</strong>导出 PDF 实际渲染并检查文字层，不能只看 DOM。</li>
+          <li><strong>生产证据：</strong>健康接口与 release 标记一起验证，HTTP 200 不能单独证明线上就是当前提交。</li>
+          <li><strong>事实一致：</strong>官网、源码 README、项目案例和隐私说明只描述已经存在的能力。</li>
+        </ul>
+        <p>源代码与当前功能边界公开在 <a href="https://github.com/Edifier-Ai/EasyResume">EasyResume GitHub 仓库</a>；产品背景、截图和持续运营状态记录在<a href="/projects/easy-resume/">项目案例页</a>。这些来源各自承担不同证据，不用未经定义的效果数字替代验证过程。</p>
+
+        <h2 id="lesson">最后：可信不是一个功能，而是整个工作流</h2>
+        <p>对 AI 简历产品而言，真正重要的不是多一个“生成”按钮，而是用户能否看见依据、保留原文、拒绝错误建议、知道数据流向，并拿到可检查的最终文件。Local First、可审阅改写、透明规则和分层验收，都是为了同一件事：让用户始终拥有最后决定权。</p>
+
+        <div class="related-notes">
+          <h2>继续查看</h2>
+          <div class="page-actions"><a class="go" href="https://resume.esaylab.com/guides">Easy Resume 简历指南 <span class="arr">↗</span></a><a class="go alt" href="/projects/easy-resume/">项目案例</a><a class="go alt" href="/blog/ai-product-validation-checklist/">AI 产品验证清单</a></div>
+        </div>
+      </div>
+
+      <aside class="article-nav" aria-label="文章目录">
+        <strong>文章目录</strong>
+        <ol>
+          <li><a href="#problem">问题定义</a></li>
+          <li><a href="#local-first">Local First</a></li>
+          <li><a href="#rules">体检规则</a></li>
+          <li><a href="#ats">ATS 与 PDF</a></li>
+          <li><a href="#screening">模拟首筛</a></li>
+          <li><a href="#evidence">发布证据</a></li>
+          <li><a href="#lesson">实践结论</a></li>
+        </ol>
+      </aside>
+    </article>
+  </main>
+
+  <footer><div class="footer-inner"><span>© <span id="year">2026</span> summer2077®</span><nav class="footer-nav" aria-label="页脚导航"><a href="/">首页</a><a href="/projects/">作品</a><a href="/blog/">博客</a><a href="/about/">关于</a></nav></div></footer>
+  <div id="cursor" aria-hidden="true"></div>
+  <script src="/js/main.js?v=20260809-17"></script>
+</body>
+</html>

@@ -57,6 +57,7 @@ python -m http.server 8000
 - `http://localhost:8000/blog/`
 - `http://localhost:8000/blog/vibe-coding-from-idea-to-product/`
 - `http://localhost:8000/blog/ai-product-validation-checklist/`
+- `http://localhost:8000/blog/easy-resume-local-first-method/`
 
 ## 内容发布规则
 
@@ -90,7 +91,7 @@ python -m http.server 8000
 
 目标生产结构为 Ubuntu Nginx。代码仓库不保留 GitHub Pages 专用 `CNAME`；部署时应把首页、内页目录、SEO 文件、CSS、JavaScript 和新增 WebP 一起同步到站点根目录。Nginx 需要使用 `try_files $uri $uri/ =404;`，并将 404 错误页指向 `/404.html`。
 
-截至 2026-08-13，SEO 博客与抓取优化已部署，百度主域验证标签提交为 `5c2411b`，生产 release 为 `20260813T063400Z-5c2411b`；`/var/www/personal-site/current` 已原子切换，旧 release `20260813T055917Z-948147d` 保留用于回滚。正式域名 9 个 canonical 页面、robots、sitemap、百度主域验证、首页抓取诊断、百度统计数据、定制 404、www→主域 301 与静态资源缓存均已验证。百度站点类型已设为自适应；资源提交仍受站点主体未关联、当日 sitemap 配额为 0 和 API 初始化未完成限制。
+截至 2026-08-13，SEO 博客与抓取优化已部署，百度主域验证标签提交为 `5c2411b`，生产 release 为 `20260813T063400Z-5c2411b`；`/var/www/personal-site/current` 已原子切换，旧 release `20260813T055917Z-948147d` 保留用于回滚。2026-08-14 新增 Easy Resume 本地优先方法文章与第 10 个 canonical URL，代码已完成本地验证，生产发布状态以最新 release 为准。百度站点类型已设为自适应；资源提交仍受站点主体未关联、当日 sitemap 配额为 0 和 API 初始化未完成限制。
 
 建议为带版本号或文件名稳定的静态资源配置长期缓存；HTML、`robots.txt` 和 `sitemap.xml` 使用较短缓存，确保内容更新能及时被抓取。
 仓库中的 `deploy/nginx-static-cache.conf` 是当前生产缓存策略的可审计副本，不应复制到公开 Web 根目录。
