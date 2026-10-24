@@ -18,7 +18,10 @@
 ├── robots.txt                         搜索与 AI crawler 规则
 ├── sitemap.xml                        可索引 URL 清单
 ├── site.webmanifest                   站点清单
-├── deploy/nginx-static-cache.conf     生产静态资源缓存片段
+├── baidu_verify_codeva-O70Xp4Tsme.html 百度文件验证（不进 sitemap）
+├── deploy/                            生产 Nginx 配置副本（不发布到 Web 根目录）
+├── scripts/deploy.sh                  可审计发布脚本
+├── docs/AGENT_HANDOFF.md              交接说明与待办
 ├── css/style.css                      全站样式
 ├── js/main.js                         渐进增强、Tab、轮播和灯箱
 └── assets/                            形象图、项目截图和 WebP 版本
@@ -92,6 +95,8 @@ python -m http.server 8000
 目标生产结构为 Ubuntu Nginx。代码仓库不保留 GitHub Pages 专用 `CNAME`；部署时应把首页、内页目录、SEO 文件、CSS、JavaScript 和新增 WebP 一起同步到站点根目录。Nginx 需要使用 `try_files $uri $uri/ =404;`，并将 404 错误页指向 `/404.html`。
 
 截至 2026-08-13，SEO 博客与抓取优化已部署，百度主域验证标签提交为 `5c2411b`，生产 release 为 `20260813T063400Z-5c2411b`；`/var/www/personal-site/current` 已原子切换，旧 release `20260813T055917Z-948147d` 保留用于回滚。2026-08-14 新增 Easy Resume 本地优先方法文章与第 10 个 canonical URL，代码已完成本地验证，生产发布状态以最新 release 为准。百度站点类型已设为自适应；资源提交仍受站点主体未关联、当日 sitemap 配额为 0 和 API 初始化未完成限制。
+
+发布使用 `scripts/deploy.sh`：只打包 HEAD 中的白名单文件，新建 release 目录、校验 sha256 清单后原子切换 `current`，并自动检查线上状态。用法、流程和待办见 `docs/AGENT_HANDOFF.md`。截至 2026-10-24，生产仍落后 `main` 一个提交（Easy Resume 方法文章尚未上线）。
 
 建议为带版本号或文件名稳定的静态资源配置长期缓存；HTML、`robots.txt` 和 `sitemap.xml` 使用较短缓存，确保内容更新能及时被抓取。
 仓库中的 `deploy/nginx-static-cache.conf` 是当前生产缓存策略的可审计副本，不应复制到公开 Web 根目录。
